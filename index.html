@@ -16,8 +16,8 @@
         charity: water
       </a>
       <!-- Right: Button -->
-      <button type="button" class="btn btn-warning d-flex align-items-center" id="dropletbutton">
-        <img id="droplet" src="img/Droplet.svg" alt="give icon">GIVE
+      <button type="button" class="btn btn-warning d-flex align-items-center" id="dropletbutton" onclick="window.open('https://www.charitywater.org/', '_blank')">
+        <img id="droplet" src="img/Droplet.svg" alt="give icon">Donate
       </button>
     </div>
   </nav>
@@ -41,7 +41,7 @@
           <p>Score: <div id="score"></div></p>
           <p>Timer: <div id="timer"></div></p>
         </div>
-        <h2>Help charity: water deliver clean water to all checkpoints and reach the destination</h3>
+        <h3>Help charity: water deliver clean water to all checkpoints and reach the destination</h3>
         <p>Playing on a desktop? Use your arrow keys to guide the character around.</p>
         <p>On mobile? Just swipe in the direction you want the character to go!</p>
         <ul>
@@ -73,6 +73,17 @@
       </div>
     </div>
   </div>
+  <footer class="bg-body-tertiary text-center py-3 mt-4">
+    <p>&copy; 2024 Charity Water Game. All rights reserved.</p>
+    <p>
+      <a href="https://www.charitywater.org/" target="_blank" rel="noopener noreferrer">
+        Visit charity: water
+      </a>
+    </p>
+  </footer>
+  <!-- Add audio elements -->
+  <audio id="victorySound" src="audio/victorysound.mp3" preload="auto"></audio>
+  <audio id="waterSound" src="audio/watersound.mp3" preload="auto"></audio>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
   <script src="script.js"></script>
 </body>

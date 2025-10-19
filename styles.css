@@ -20,6 +20,26 @@ body {
   color: #333; /* Dark text for readability */
   background-color: #383B36;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure the body takes up the full height of the viewport */
+}
+
+/* Allow the main content to grow and take up available space */
+main {
+  flex: 1; /* Push the footer to the bottom */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center the gameboard vertically */
+  align-items: center; /* Center the gameboard horizontally */
+}
+
+/* Footer styling */
+footer {
+  background-color: #f9f9f9;
+  text-align: center;
+  padding: 1rem;
+  border-top: 1px solid #ccc;
 }
 
 nav {
@@ -105,6 +125,53 @@ li img {
   display: flex;
   position: relative;
   align-items: center;
+  justify-content: center;
+  font-size: 2rem; /* Default font size for medium screens */
+}
+
+/* Optional: Adjust player, checkpoint, goal, and bush sizes individually if needed */
+.player {
+  font-size: 2.5rem; /* Default player icon size */
+}
+
+.checkpoint-emoji,
+.goal-emoji,
+.bush-emoji {
+  font-size: 2.5rem; /* Default checkpoint, goal, and bush icon sizes */
+}
+
+/* Larger emojis/images for desktops */
+@media (min-width: 992px) {
+  .cell {
+    font-size: 3rem; /* Increase font size for larger screens */
+  }
+
+  .player {
+    font-size: 3.5rem; /* Larger player icon */
+  }
+
+  .checkpoint-emoji,
+  .goal-emoji,
+  .bush-emoji {
+    font-size: 3.5rem; /* Larger checkpoint, goal, and bush icons */
+  }
+}
+
+/* Smaller emojis/images for phones */
+@media (max-width: 576px) {
+  .cell {
+    font-size: 1.5rem; /* Decrease font size for smaller screens */
+  }
+
+  .player {
+    font-size: 2rem; /* Smaller player icon */
+  }
+
+  .checkpoint-emoji,
+  .goal-emoji,
+  .bush-emoji {
+    font-size: 2rem; /* Smaller checkpoint, goal, and bush icons */
+  }
 }
 
 /* Scoreboard & Game Info */
@@ -173,4 +240,23 @@ li div img {
   height: auto;
   margin-bottom: 1em;
 }
+}
+
+/* Glowing effect for the player */
+.player.glow {
+  animation: glowEffect 0.5s ease-in-out;
+  box-shadow: 0 0 15px 5px gold;
+}
+
+/* Keyframes for the glow animation */
+@keyframes glowEffect {
+  0% {
+    box-shadow: 0 0 5px 2px gold;
+  }
+  50% {
+    box-shadow: 0 0 15px 5px gold;
+  }
+  100% {
+    box-shadow: 0 0 5px 2px gold;
+  }
 }

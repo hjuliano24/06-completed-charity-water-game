@@ -151,6 +151,10 @@ function leaveTrail(row, col) {
   }
 }
 
+// Get references to the audio elements
+const victorySound = document.getElementById('victorySound');
+const waterSound = document.getElementById('waterSound');
+
 // Move the player with boundary and bush checks
 function movePlayer(deltaRow, deltaCol) {
   if (gameEnded) return;
@@ -158,7 +162,7 @@ function movePlayer(deltaRow, deltaCol) {
   const newRow = playerPos.row + deltaRow;
   const newCol = playerPos.col + deltaCol;
 
-  // Bounds check using gridSize instead of hardcoded 4
+  // Bounds check using gridSize
   if (newRow < 1 || newRow > gridSize || newCol < 1 || newCol > gridSize) return;
 
   const target = document.getElementById(`cell-${newRow}-${newCol}`);
@@ -166,14 +170,13 @@ function movePlayer(deltaRow, deltaCol) {
 
   // Block movement if there's a bush
   if (target.classList.contains('bush')) {
-    // Optionally, give a small flash to show it's blocked
     target.style.transition = 'transform 0.08s';
     target.style.transform = 'translateY(-3px)';
     setTimeout(() => { target.style.transform = ''; }, 80);
     return;
   }
 
-  // leave a trail at the current position before moving
+  // Leave a trail at the current position before moving
   leaveTrail(playerPos.row, playerPos.col);
 
   // Move player
@@ -185,15 +188,21 @@ function movePlayer(deltaRow, deltaCol) {
     const key = `${newRow}-${newCol}`;
     if (!visitedCheckpoints[key]) {
       visitedCheckpoints[key] = true;
-      // award different points for Normal/Hard (6x6) vs Easy (4x4)
+
+      // Play water sound
+      if (waterSound) waterSound.play();
+
+      // Award points
       const checkpointValue = (gridSize === 6) ? 25 : 50;
       score += checkpointValue;
       scoreDisplay.textContent = score;
+
       // Small visual feedback: pulse the cell
       target.style.transition = 'box-shadow 0.4s';
       target.style.boxShadow = '0 0 12px 4px gold';
       setTimeout(() => { target.style.boxShadow = ''; }, 500);
-      // remove checkpoint marker so it's clear it's collected
+
+      // Remove checkpoint marker
       target.textContent = '✅';
       target.classList.remove('checkpoint');
 
@@ -206,6 +215,9 @@ function movePlayer(deltaRow, deltaCol) {
 
   // If we reach the goal, end the game with a congratulations message
   if (target.classList.contains('goal')) {
+    // Play victory sound
+    if (victorySound) victorySound.play();
+
     endGame();
   }
 }
@@ -257,7 +269,7 @@ function endGame() {
   if (gameEnded) return;
   gameEnded = true;
 
-  // stop timer if running
+  // Stop timer if running
   if (timerInterval) {
     clearInterval(timerInterval);
     timerInterval = null;
