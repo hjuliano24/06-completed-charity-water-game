@@ -32,6 +32,7 @@ main {
   flex-direction: column;
   justify-content: center; /* Center the gameboard vertically */
   align-items: center; /* Center the gameboard horizontally */
+  padding-bottom: 1em;
 }
 
 /* Footer styling */
@@ -50,6 +51,7 @@ nav {
 #logo {
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 1em;
+  letter-spacing: 2px;
 }
 
 #logoimg {
@@ -109,6 +111,9 @@ nav {
   overflow-y: auto; /* keep vertical scrolling enabled */
   -ms-overflow-style: none;  /* IE and older Edge: hide scrollbar */
   scrollbar-width: none;     /* Firefox: hide scrollbar */
+  padding-top: 1em;
+  padding-left: 2em;
+  padding-right: 2em;
 }
 
 /* WebKit browsers (Chrome, Safari, newer Edge) */
@@ -178,7 +183,6 @@ li img {
 .scoreboard {
   display: flex;
   justify-content: space-between;
-  padding: 1rem;
   padding-bottom: 0;
 }
 
@@ -259,4 +263,23 @@ li div img {
   100% {
     box-shadow: 0 0 5px 2px gold;
   }
+}
+
+.footer {
+  margin-bottom: 0;
+}
+
+.messageboardText {
+  padding-top: 0;
+  margin-top: 0;
+}
+
+h3{
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-top: 1em;
+}
+
+p{
+  margin-bottom: 0;
 }
